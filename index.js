@@ -9,6 +9,7 @@ import rateLimit from 'express-rate-limit';
 import authRoutes from './routes/auth.js';
 import busRoutes from './routes/bus.js';
 import seatRoutes from './routes/seat.js';
+import reserveRoutes from './routes/reserve.js';
 
 const app = express();
 dotenv.config();
@@ -55,6 +56,7 @@ app.get("/",(req,res)=>{
 app.use("/api/auth",authRoutes);
 app.use("/api/bus",busRoutes);
 app.use("/api/seat",seatRoutes);
+app.use("/api/reserve",reserveRoutes);
 
 
 // error handler 

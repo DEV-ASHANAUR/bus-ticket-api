@@ -21,6 +21,7 @@ export const create = async(req,res,next)=>{
 }
 
 export const updateSeatAvailability = async(req,res,next)=>{
+    // req.params.id
     try {
         await Seat.updateOne(
             {"seatNumbers._id":req.params.id},
