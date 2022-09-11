@@ -34,15 +34,23 @@ const ReserveSchema = new mongoose.Schema({
     operator: {
       type: String
     },
-    payment: {
-        type: Boolean,
-        default:false
+    valId: {
+        type:String
     },
     payType:{
         type:String
     },
     address : {
       type:String
+    },
+    txtId:{
+      type:String
+    },
+    status : {
+      type:String
+    },
+    selectedSeatId : {
+      type: Array
     }
 
   });

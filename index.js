@@ -4,15 +4,25 @@ import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import rateLimit from 'express-rate-limit';
+import bodyParser from 'body-parser';
+
+
 
 //router
 import authRoutes from './routes/auth.js';
 import busRoutes from './routes/bus.js';
 import seatRoutes from './routes/seat.js';
 import reserveRoutes from './routes/reserve.js';
+import paymentRoutes from './routes/payment.js';
+
 
 const app = express();
 dotenv.config();
+app.use(cors());
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: true }))
+// parse application/json
+app.use(bodyParser.json())
 
 //port
 const PORT = process.env.PORT || 8000;
@@ -44,7 +54,7 @@ const limiter = rateLimit({
 	legacyHeaders: false, // Disable the `X-RateLimit-*` headers
 })
 app.use(limiter);
-app.use(cors(corsOptions));
+
 app.use(cookieParser());
 app.use(express.json());
 
@@ -57,7 +67,7 @@ app.use("/api/auth",authRoutes);
 app.use("/api/bus",busRoutes);
 app.use("/api/seat",seatRoutes);
 app.use("/api/reserve",reserveRoutes);
-
+app.use("/api/payment",paymentRoutes);
 
 // error handler 
 app.use((err,req,res,next)=>{
