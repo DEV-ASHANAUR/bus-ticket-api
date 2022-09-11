@@ -76,7 +76,7 @@ export const successPayment = async(req,res,next)=>{
                 })
             )
             await Reserve.findByIdAndUpdate(reserve._id,{$set:{status:"success",valId:req.body.val_id,payType:req.body.card_issuer}});
-            res.status(200).redirect(`http://localhost:3000/invoice/${reserve._id}`);
+            res.status(200).redirect(`https://preeminent-tulumba-1b0a47.netlify.app/invoice/${reserve._id}`);
         } catch (error) {
             next(error)
         }
@@ -88,12 +88,12 @@ export const failPayment = async(req,res,next)=>{
     if(reserve){
         try {
             await Reserve.findByIdAndDelete(reserve._id);
-            res.status(200).redirect(`http://localhost:3000/`);
+            res.status(200).redirect(`https://preeminent-tulumba-1b0a47.netlify.app/`);
         } catch (error) {
             next(error)
         }
     }else{
-        res.status(200).redirect(`http://localhost:3000/`);
+        res.status(200).redirect(`https://preeminent-tulumba-1b0a47.netlify.app/`);
     }
 }
 
@@ -102,11 +102,11 @@ export const cancelPayment = async(req,res,next)=>{
     if(reserve){
         try {
             await Reserve.findByIdAndDelete(reserve._id);
-            res.status(200).redirect(`http://localhost:3000/`);
+            res.status(200).redirect(`https://preeminent-tulumba-1b0a47.netlify.app/`);
         } catch (error) {
             next(error)
         }
     }else{
-        res.status(200).redirect(`http://localhost:3000/`);
+        res.status(200).redirect(`https://preeminent-tulumba-1b0a47.netlify.app/`);
     }
 }
