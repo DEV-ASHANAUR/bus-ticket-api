@@ -42,6 +42,7 @@ export const getBus = async(req,res,next)=>{
 export const getBuss = async(req,res,next)=>{
 
     const {starting_point,ending_point,...others} = req.query;
+    // console.log(starting_point,ending_point);
     // const types = type?.split(",") || ["Ac","Non-Ac"];
     
     try {
